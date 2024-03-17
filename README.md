@@ -1,4 +1,5 @@
-<h1>dukascopy-node</h1>
+<h1>dukascopy-node with weeks enabled</h1>
+<h3>added feature to download weekly data</h3>
 
 <p align="center"><img width="150" src="https://github.com/Leo4815162342/dukascopy-node/blob/master/dukascopy-node.png?raw=true" alt="dukascopy-node"></p>
 

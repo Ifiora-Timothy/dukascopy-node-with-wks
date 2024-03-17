@@ -1,5 +1,5 @@
 {
-	"name": "dukascopy-node",
+	"name": "dukascopy-node-weeks",
 	"version": "1.37.0",
 	"description": "Node.js library for downloading historical market tick data for for Crypto, Stocks, ETFs, CFDs, Forex",
 	"main": "dist/index.js",
