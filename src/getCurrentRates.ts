@@ -31,6 +31,7 @@ const timeframeMap: Record<TimeframeType, string> = {
   h1: '1HOUR',
   h4: '4HOUR',
   d1: '1DAY',
+  w1: 'IWEEK',
   mn1: '1MONTH'
 };
 
@@ -217,6 +218,7 @@ function getTimeframeLimit(timeframe: TimeframeType, now: Date, limit: number) {
     h1: 60 * 60 * 1000,
     h4: 4 * 60 * 60 * 1000,
     d1: 24 * 60 * 60 * 1000,
+    w1: 7 * 24 * 60 * 60 * 1000,
     mn1: 30 * 24 * 60 * 60 * 1000
   };
 

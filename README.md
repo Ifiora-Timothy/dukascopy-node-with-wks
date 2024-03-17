@@ -31,9 +31,9 @@
     </thead>
     <tbody>
         <tr>
-            <td><pre><code>npm install dukascopy-node --save</code></pre></td>
-            <td><pre><code>yarn add dukascopy-node</code></pre></td>
-            <td><pre><code>pnpm add dukascopy-node</code></pre></td>
+            <td><pre><code>npm install dukascopy-node-weeks --save</code></pre></td>
+            <td><pre><code>yarn add dukascopy-node-weeks</code></pre></td>
+            <td><pre><code>pnpm add dukascopy-node-weeks</code></pre></td>
         </tr>
     </tbody>
 </table>
@@ -41,7 +41,7 @@
 ## ✨ Usage via CLI
 
 ```bash
-npx dukascopy-node -i btcusd -from 2019-01-13 -to 2019-01-14 -t tick -f csv
+npx dukascopy-node-weeks -i btcusd -from 2019-01-13 -to 2019-01-14 -t tick -f csv
 ```
 
 ![dukascopy-node-1080p](https://user-images.githubusercontent.com/12486774/210557823-63ba12f1-ab77-42ae-ad27-6c199b0c1fdb.gif)
@@ -54,7 +54,7 @@ npx dukascopy-node -i btcusd -from 2019-01-13 -to 2019-01-14 -t tick -f csv
 ## ✨ Usage via Node.js ([try it live](https://runkit.com/embed/of4ho2xv8rvv))
 
 ```javascript
-const { getHistoricalRates } = require('dukascopy-node');
+const { getHistoricalRates } = require('dukascopy-node-weeks');
 
 (async () => {
   try {

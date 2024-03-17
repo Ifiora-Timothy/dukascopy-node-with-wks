@@ -13,7 +13,7 @@
 		"dukascopy-node": "./dist/cli/index.js"
 	},
 	"scripts": {
-		"build": "rm -rf dist && tsup-node src/index.ts src/cli/index.ts --format esm,cjs --dts --legacy-output",
+		"build": "rimraf dist && tsup-node src/index.ts src/cli/index.ts --format esm,cjs --dts --legacy-output",
 		"test": "vitest run",
 		"coverage": "vitest run --coverage",
 		"format": "prettier --config .prettierrc 'src/**/*.ts' --write",
@@ -58,7 +58,8 @@
 		"fs-extra": "10.1.0",
 		"lzma-purejs-requirejs": "1.0.0",
 		"node-fetch": "2.6.7",
-		"python-struct": "1.1.3"
+		"python-struct": "1.1.3",
+		"rimraf": "5.0.5"
 	},
 	"devDependencies": {
 		"@types/cli-progress": "3.9.2",
