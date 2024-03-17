@@ -1,12 +1,13 @@
+import { Timeframe } from '../config/timeframes';
+import { splitArrayInChunks } from '../utils/general';
 import {
-  getOHLC,
   getMinuteOHLCfromTicks,
   getMonthlyOHLCfromDays,
-  getSecondOHLCfromTicks
+  getOHLC,
+  getSecondOHLCfromTicks,
+  getWeeklyOHLCfromDays
 } from './ohlc';
-import { splitArrayInChunks } from '../utils/general';
 import { AggregateInput } from './types';
-import { Timeframe } from '../config/timeframes';
 
 export function aggregate({
   data,
@@ -189,6 +190,13 @@ export function aggregate({
       if (toTimeframe === Timeframe.mn1) {
         const monthlyOHLC = getMonthlyOHLCfromDays(data, volumes);
         return monthlyOHLC;
+      }
+    }
+
+    if (fromTimeframe === Timeframe.d1) {
+      if (toTimeframe === Timeframe.w1) {
+        const weeklyOHLC = getWeeklyOHLCfromDays(data, volumes);
+        return weeklyOHLC;
       }
     }
   }

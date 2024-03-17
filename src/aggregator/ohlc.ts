@@ -1,5 +1,6 @@
-import { roundNum } from './../utils/general';
 import { PriceType } from '../config/price-types';
+import { getUTCWeek } from '../utils/instrument-meta-data/get-UTC-week';
+import { roundNum } from './../utils/general';
 
 interface GetOHLCInput {
   input: number[][];
@@ -194,12 +195,20 @@ function getMonthlyOHLCfromDays(dailyCandles: number[][], volumes: boolean): num
 
   return ohlc;
 }
+//create the  above function but for weeks
+function getWeeklyOHLCfromDays(dailyCandles: number[][], volumes: boolean): number[][] {
+  const breakdown = breakdownByInterval(dailyCandles, 52, d => getUTCWeek(d));
+  const ohlc = breakdown.map(data => (data.length > 0 ? getOHLC({ input: data, volumes }) : []));
+
+  return ohlc;
+}
 
 export {
-  getOHLC,
-  ticksToOHLC,
   breakdownByInterval,
-  getSecondOHLCfromTicks,
   getMinuteOHLCfromTicks,
-  getMonthlyOHLCfromDays
+  getMonthlyOHLCfromDays,
+  getOHLC,
+  getSecondOHLCfromTicks,
+  getWeeklyOHLCfromDays,
+  ticksToOHLC
 };
