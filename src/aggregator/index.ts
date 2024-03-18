@@ -4,8 +4,7 @@ import {
   getMinuteOHLCfromTicks,
   getMonthlyOHLCfromDays,
   getOHLC,
-  getSecondOHLCfromTicks,
-  getWeeklyOHLCfromDays
+  getSecondOHLCfromTicks
 } from './ohlc';
 import { AggregateInput } from './types';
 
@@ -200,13 +199,6 @@ export function aggregate({
       if (toTimeframe === Timeframe.mn1) {
         const monthlyOHLC = getMonthlyOHLCfromDays(data, volumes);
         return monthlyOHLC;
-      }
-    }
-
-    if (fromTimeframe === Timeframe.d1) {
-      if (toTimeframe === Timeframe.w1) {
-        const weeklyOHLC = getWeeklyOHLCfromDays(data, volumes);
-        return weeklyOHLC;
       }
     }
   }
