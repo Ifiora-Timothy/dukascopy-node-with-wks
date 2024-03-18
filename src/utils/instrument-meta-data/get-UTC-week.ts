@@ -28,5 +28,5 @@ export function getUTCWeek(date: Date): number {
   // The week number is the number of weeks between the
   // first Thursday of the year and the Thursday in the target week
   // 604800000 is the number of milliseconds in a week
-  return 1 + Math.ceil((target.getTime() - januaryFirst.getTime()) / 604800000);
+  return Math.ceil((target.getTime() - januaryFirst.getTime()) / 604800000);
 }

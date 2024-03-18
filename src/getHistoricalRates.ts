@@ -1,23 +1,23 @@
 import {
+  Config,
   ConfigArrayItem,
   ConfigArrayTickItem,
-  ConfigJsonItem,
-  ConfigJsonTickItem,
   ConfigCsvItem,
-  Config
+  ConfigJsonItem,
+  ConfigJsonTickItem
 } from './config';
 
-import { validateConfigNode } from './config-validator';
-import { normaliseDates } from './dates-normaliser';
-import { generateUrls } from './url-generator';
 import { BufferFetcher } from './buffer-fetcher';
-import { processData } from './processor';
-import { formatOutput } from './output-formatter';
-import { CacheManager } from './cache-manager';
-import { formatBytes } from './utils/formatBytes';
-import { Timeframe } from './config/timeframes';
-import { ArrayItem, ArrayTickItem, JsonItem, JsonItemTick, Output } from './output-formatter/types';
 import { BufferFetcherInput } from './buffer-fetcher/types';
+import { CacheManager } from './cache-manager';
+import { validateConfigNode } from './config-validator';
+import { Timeframe } from './config/timeframes';
+import { normaliseDates } from './dates-normaliser';
+import { formatOutput } from './output-formatter';
+import { ArrayItem, ArrayTickItem, JsonItem, JsonItemTick, Output } from './output-formatter/types';
+import { processData } from './processor';
+import { generateUrls } from './url-generator';
+import { formatBytes } from './utils/formatBytes';
 
 import { version } from '../package.json';
 

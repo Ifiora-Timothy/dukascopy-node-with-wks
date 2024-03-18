@@ -4,7 +4,8 @@ import {
   getMinuteOHLCfromTicks,
   getMonthlyOHLCfromDays,
   getOHLC,
-  getSecondOHLCfromTicks
+  getSecondOHLCfromTicks,
+  getWeeklyOHLCfromDays
 } from './ohlc';
 import { AggregateInput } from './types';
 
@@ -191,6 +192,7 @@ export function aggregate({
         );
       }
       if (toTimeframe === Timeframe.mn1) {
+        console.log('heeeee');
         return [getOHLC({ input: data, filterFlats: ignoreFlats, startTs, volumes })];
       }
     }
@@ -199,6 +201,10 @@ export function aggregate({
       if (toTimeframe === Timeframe.mn1) {
         const monthlyOHLC = getMonthlyOHLCfromDays(data, volumes);
         return monthlyOHLC;
+      }
+      if (toTimeframe === Timeframe.w1) {
+        const weeklyOHLC = getWeeklyOHLCfromDays(data, volumes);
+        return weeklyOHLC;
       }
     }
   }

@@ -1,8 +1,8 @@
+import { aggregate } from '../aggregator';
+import { normalise } from '../data-normaliser';
+import { decompress } from '../decompressor';
 import { getDateFromUrl } from '../utils/date';
 import { getTimeframeFromUrl } from '../utils/range';
-import { decompress } from '../decompressor';
-import { normalise } from '../data-normaliser';
-import { aggregate } from '../aggregator';
 import { ProcessDataInput, ProcessDataOutput } from './types';
 
 function processData({
