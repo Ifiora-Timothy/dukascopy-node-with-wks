@@ -3,14 +3,13 @@
 // .../2019/01/01/BID_candles_min_1.bi5:    minute data per day
 // .../2019/01/01/01h_ticks_1.bi5:  tick data per hour
 
-import { getLowerRange, isCurrentRange, getClosestAvailableRange } from '../utils/range';
-import { getStartOfUtc, getYMDH } from '../utils/date';
-import { pad } from '../utils/general';
-import { GenerateUrlsInput } from './types';
-import { TimeRange } from '../utils/range';
-import { TimeframeType, Timeframe } from '../config/timeframes';
-import { PriceType } from '../config/price-types';
 import { InstrumentType } from '../config/instruments';
+import { PriceType } from '../config/price-types';
+import { Timeframe, TimeframeType } from '../config/timeframes';
+import { getStartOfUtc, getYMWDH } from '../utils/date';
+import { pad } from '../utils/general';
+import { TimeRange, getClosestAvailableRange, getLowerRange, isCurrentRange } from '../utils/range';
+import { GenerateUrlsInput } from './types';
 
 export const URL_ROOT = 'https://datafeed.dukascopy.com/datafeed';
 
@@ -20,7 +19,7 @@ function getUrl(
   range: TimeRange,
   priceType: PriceType
 ): string {
-  const [yearPad, monthPad, dayPad, hourPad] = getYMDH(date).map(pad);
+  const [yearPad, monthPad, dayPad, hourPad] = getYMWDH(date).map(pad);
 
   let url = `${URL_ROOT}/${instrument.toUpperCase()}/${yearPad}/`;
 

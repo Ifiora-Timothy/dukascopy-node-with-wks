@@ -1,19 +1,21 @@
 import { TimeframeType } from '../config/timeframes';
+import { getUTCWeek } from './instrument-meta-data/get-UTC-week';
 import { TimeRange } from './range';
 
-function getYMDH(date: Date): number[] {
-  const [year, month, day, hours] = [
+function getYMWDH(date: Date): number[] {
+  const [year, month, week, day, hours] = [
     date.getUTCFullYear(),
     date.getUTCMonth(),
+    getUTCWeek(date),
     date.getUTCDate(),
     date.getUTCHours()
   ];
 
-  return [year, month, day, hours];
+  return [year, month, week, day, hours];
 }
 
 function getStartOfUtc(date: Date, period: TimeRange, offset = 0): Date {
-  const [year, month, day, hours] = getYMDH(date);
+  const [year, month, week, day, hours] = getYMWDH(date);
 
   let startOfUtc = new Date();
 
@@ -21,6 +23,8 @@ function getStartOfUtc(date: Date, period: TimeRange, offset = 0): Date {
     startOfUtc = new Date(Date.UTC(year, month, day, hours + offset));
   } else if (period === 'day') {
     startOfUtc = new Date(Date.UTC(year, month, day + offset));
+  } else if (period === 'week') {
+    startOfUtc = new Date(Date.UTC(year, month + week + offset));
   } else if (period === 'month') {
     startOfUtc = new Date(Date.UTC(year, month + offset));
   } else if (period === 'year') {
@@ -33,21 +37,24 @@ function getStartOfUtc(date: Date, period: TimeRange, offset = 0): Date {
 function getIsCurrentObj(date: Date): {
   year: boolean;
   month: boolean;
+  week: boolean;
   day: boolean;
   hour: boolean;
 } {
-  const [year, month, day, hours] = getYMDH(date);
+  const [year, month, day, week, hours] = getYMWDH(date);
 
-  const [currentYear, currentMonth, currentDay, currentHours] = getYMDH(new Date());
+  const [currentYear, currentMonth, currWeek, currentDay, currentHours] = getYMWDH(new Date());
 
   const isCurrentYear = year === currentYear;
   const isCurrentMonth = isCurrentYear && month === currentMonth;
+  const isCurrentWeek = isCurrentMonth && week === currWeek;
   const isCurrentDay = isCurrentMonth && day === currentDay;
   const isCurrentHour = isCurrentDay && hours === currentHours;
 
   const obj = {
     year: isCurrentYear,
     month: isCurrentMonth,
+    week: isCurrentWeek,
     day: isCurrentDay,
     hour: isCurrentHour
   };
@@ -118,11 +125,11 @@ function getDateTimeFormatOptions(timeframe: TimeframeType): Intl.DateTimeFormat
 }
 
 export {
-  getYMDH,
-  getStartOfUtc,
-  getIsCurrentObj,
   getDateFromUrl,
-  getFormattedDate,
   getDateString,
-  getDateTimeFormatOptions
+  getDateTimeFormatOptions,
+  getFormattedDate,
+  getIsCurrentObj,
+  getStartOfUtc,
+  getYMWDH
 };

@@ -181,6 +181,16 @@ export function aggregate({
           })
         );
       }
+      if (toTimeframe === Timeframe.w1) {
+        return splitArrayInChunks(data, 24 * 7).map((d, i) =>
+          getOHLC({
+            input: d,
+            filterFlats: ignoreFlats,
+            startTs: startTs + i * 7 * 1440 * 1000 * 60,
+            volumes
+          })
+        );
+      }
       if (toTimeframe === Timeframe.mn1) {
         return [getOHLC({ input: data, filterFlats: ignoreFlats, startTs, volumes })];
       }

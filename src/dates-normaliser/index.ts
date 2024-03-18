@@ -44,7 +44,7 @@ export function normaliseDates({
     minFromIsoDate = startMonthForHourlyCandles;
   }
 
-  if (timeframe === Timeframe.d1 || timeframe === Timeframe.mn1) {
+  if (timeframe === Timeframe.d1 || timeframe === Timeframe.w1 || timeframe === Timeframe.mn1) {
     minFromIsoDate = startYearForDailyCandles;
   }
 
